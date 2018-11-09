@@ -6,3 +6,4 @@ test:
 clean:
 	rm Weather.o
 	rm WeatherTest
+	rm temp_results.txt
