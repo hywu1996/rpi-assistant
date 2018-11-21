@@ -7,5 +7,8 @@ Prerequisites:
 2. Install nlohmann's JSON library for C++ (https://github.com/nlohmann/json)
 
 Functions:
-1. Calculator - 
-2. SpeechToText - g++ api_utils.cpp api_utils.hpp PiAss.hpp RecognitionAudio.cpp RecognitionAudio.hpp RecognitionConfig.cpp RecognitionConfig.hpp SpeechToText.cpp SpeechToText.hpp -o SpeechToText
+1. Calculator - make test, make clean
+2. Date - make test, make clean
+3. Weather - 
+4. PiAssist - g++ 
+3. SpeechToText - g++ api_utils.cpp api_utils.hpp PiAss.hpp RecognitionAudio.cpp RecognitionAudio.hpp RecognitionConfig.cpp RecognitionConfig.hpp SpeechToText.cpp SpeechToText.hpp -o SpeechToText
