@@ -6,7 +6,7 @@ Calculator::Calculator()
 {
 }
 
-float Calculator::calculate(vector<float> nums, vector<char> ops)
+string Calculator::calculate(vector<float> nums, vector<char> ops)
 {
     //division and multiplication
     for (int i = 0; i < ops.size(); i++)
@@ -51,5 +51,5 @@ float Calculator::calculate(vector<float> nums, vector<char> ops)
         }
     }
 
-    return nums[0];
+    return to_string(nums[0]);
 }

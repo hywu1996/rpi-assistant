@@ -7,6 +7,6 @@ class Calculator
 {
 	public:
 		Calculator(); //constructor
-		float calculate(std::vector<float>, std::vector <char>);
+		std::string calculate(std::vector<float>, std::vector <char>);
 };
 #endif
