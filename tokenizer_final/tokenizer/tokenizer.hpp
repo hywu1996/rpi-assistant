@@ -19,11 +19,11 @@
 #include <string>
 #include <sstream>
 #include <vector>
-#include "Command.hpp"
+//#include "Command.hpp"
 
 class TokenizerClass{
 public:
-    static void tokenize(std::string);
+    static std::vector<std::string> tokenize(std::string);
     
 };
 
