@@ -10,7 +10,6 @@
 #define RecognitionAudio_hpp
 
 #include <stdio.h>
-#include "RecognitionAudio.hpp"
 #include "json.hpp"
 
 class RecognitionAudio{

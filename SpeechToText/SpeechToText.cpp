@@ -16,7 +16,9 @@ std::string parseJSON(std::string filename) {
     std::ifstream t(filename);
     std::string str((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
     json jsonDeserial = json_deserialize(str);
-    return jsonDeserial["results"][0]["alternatives"][0]["transcript"];
+    std::string lowercase = jsonDeserial["results"][0]["alternatives"][0]["transcript"];
+    std::transform(lowercase.begin(), lowercase.end(), lowercase.begin(), ::tolower);
+    return lowercase;
 }
 
 void textToSpeech(std::string text) {

@@ -24,7 +24,7 @@ vector<string> TokenizerClass::tokenize(string input){
     for(int i = 0; i < tokens.size(); i++){
         //cout << tokens[i] << endl;
         
-        if(argumentFlag == 0 && commandFlag == 0 && tokens[i] == "command"){
+        if(argumentFlag == 0 && commandFlag == 0 && tokens[i] == "run"){
             commandFlag = 1;
         }
         else if(commandFlag == 1 && argumentFlag == 0){
@@ -36,9 +36,9 @@ vector<string> TokenizerClass::tokenize(string input){
             command.push_back(tokens[i]);
         }
     }
-    for(int j = 0; j < command.size(); j++){
-        cout << command[j] << endl;
-    }
+    //for(int j = 0; j < command.size(); j++){
+        //cout << command[j] << endl;
+    //}
     return command;
     
 }
