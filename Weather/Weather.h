@@ -7,6 +7,6 @@ class Weather
 {
 	public:
 		Weather(); //constructor
-		std::vector<std::string> getWeather(std::string);
+		std::string getWeather(std::string);
 
 };

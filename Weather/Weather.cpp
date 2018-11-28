@@ -6,7 +6,7 @@ Weather::Weather(){
 
 }
 
-vector<string> Weather::getWeather(string city)
+string Weather::getWeather(string city)
 {
     string arguments = city;  //location
     string filename = "./weatherapi.py "; //python script
@@ -19,17 +19,19 @@ vector<string> Weather::getWeather(string city)
     //with time (hopefully by final submission) code will be refactored into c++
     //this was communicated to Professor Katchabaw
 
-    size_t size = 2; 
-    vector<string> ret(size); // 0: temperature || 1: condition
+    // size_t size = 2; 
+    // vector<string> ret(size); // 0: temperature || 1: condition
     
     ifstream res; // response file from API call
     string line; // read line 
     res.open("temp_results.txt"); // open response file
     getline(res, line);
-    ret[0] = line; //temperature
+    string temp = line; //temperature
     getline(res, line);
-    ret[1] = line; //condition
+    string condition = line; //condition
     res.close();
+
+    string ret = "The weather in " + city + " is " + temp + " degrees Celscius and " + condition;
     return ret;
 
 }
