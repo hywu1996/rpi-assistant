@@ -5,10 +5,10 @@ A basic virtual assistant program using the Raspberry Pi in conjunction with Goo
 Prerequisites:
 1. Install and initialize the Google Cloud SDK (https://cloud.google.com/sdk/docs/)
 2. Install nlohmann's JSON library for C++ (https://github.com/nlohmann/json)
+3. Initialize the following environment variables as such:
+	AUDIODEV=
+	AUDIODRIVER=
+	GOOGLE_APPLICATION_CREDENTIALS="~/Downloads/"
 
 Functions:
-1. Calculator - make test, make clean
-2. Date - make test, make clean
-3. Weather - 
-4. PiAssist - g++ 
-3. SpeechToText - g++ api_utils.cpp api_utils.hpp PiAss.hpp RecognitionAudio.cpp RecognitionAudio.hpp RecognitionConfig.cpp RecognitionConfig.hpp SpeechToText.cpp SpeechToText.hpp -o SpeechToText
+SpeechToText - g++ api_utils.cpp RecognitionAudio.cpp RecognitionConfig.cpp SpeechToText.cpp W-o SpeechToText -Wno-psabi
