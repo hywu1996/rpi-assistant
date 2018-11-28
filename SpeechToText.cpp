@@ -3,8 +3,11 @@
 using namespace std;
 using json = nlohmann::json;
 
-void apiCall(std::string audiofile, std::string targetJSON) {
-    system("export GOOGLE_APPLICATION_CREDENTIALS=\"/media/sf_VMShared/group32/secret-meridian-221416-2f60aa85d2a0.json\"");
+void recordAudio(void) {
+    system("rec temp.flac rate 32k silence 2 0.1 3% 1 1.0 3%");
+}
+
+void speechToText(std::string audiofile, std::string targetJSON) {
     string line = string("gcloud ml speech recognize ") + string(audiofile) + string(" --language-code=\'en-US\' > ") + string(targetJSON);
     system(line.c_str());
 }
@@ -16,22 +19,18 @@ std::string parseJSON(std::string filename) {
     return jsonDeserial["results"][0]["alternatives"][0]["transcript"];
 }
 
-void cleanupTxt(void) {
-    system("rm *.txt");
+void textToSpeech(std::string text) {
+    string line = string("curl -H \"Authorization: Bearer \"$(gcloud auth application-default print-access-token) -H \"Content-Type: application/json; charset=utf-8\" --data \"{ \'input\':{ \'text\': \'")
+    + string(text) + string("\' }, \'voice\':{ \'languageCode\':\'en-gb\', \'name\':\'en-GB-Standard-A\', \'ssmlGender\':\'FEMALE\' }, \'audioConfig\':{ \'audioEncoding\':\'MP3\' } }\" \"https://texttospeech.googleapis.com/v1/text:synthesize\" > synthesize.txt");
+    system(line.c_str());
+    string line2 = string("sed \'s|audioContent| |\' < synthesize.txt > tmp-output.txt && tr -d \'\n \":{}\' < tmp-output.txt > tmp-output-2.txt && base64 tmp-output-2.txt --decode > audio.mp3 && rm tmp-output*.txt");
+    system(line2.c_str());
+    system("mpg123 audio.mp3");
 }
 
-int main(void) {
-    apiCall("audio.flac", "audio.txt");
-    apiCall("Alarm.flac", "Alarm.txt");
-    apiCall("Calculator.flac", "Calculator.txt");
-    apiCall("Date.flac", "Date.txt");
-    apiCall("Weather.flac", "Weather.txt");
-    cout << parseJSON("audio.txt") << endl;
-    cout << parseJSON("Alarm.txt") << endl;
-    cout << parseJSON("Calculator.txt") << endl;
-    cout << parseJSON("Date.txt") << endl;
-    cout << parseJSON("Weather.txt") << endl;
-    cleanupTxt();
-    return 0;
+void cleanupFiles(void) {
+    system("rm temp.flac");
+    system("rm temp.txt");
+    system("rm synthesize.txt");
+    system("rm audio.mp3");
 }
-
