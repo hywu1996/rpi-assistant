@@ -2,7 +2,7 @@
 
 using namespace std;
 
-string Timer::_command = "aplay alarm.wav";
+string Timer::_command = "aplay ./Timer/alarm.wav";
 int Timer::_id;
 
 Timer::Timer(int id)

@@ -5,6 +5,7 @@
 #include "./Weather/Weather.h"
 #include "./Date/Date.h"
 #include "./Volume/VolumeControl.h"
+#include "./Timer/TimerHandler.h"
 
 using namespace std;
 
@@ -14,6 +15,7 @@ int main()
 	Weather w;
 	Date d;
 	VolumeControl vol;
+	TimerHandler th;
 	while(true)
 	{
 		string enter;
@@ -23,6 +25,12 @@ int main()
 			recordAudio();
 			speechToText("temp.flac", "temp.txt");
 			string apiText = parseJSON("temp.txt");
+			
+			if (apiText=="run quit")
+			{
+				exit(0);
+			}
+			
 			cout << "Voice to Text: " << apiText << endl; //debugging
 			vector<string> args = tokenizer.tokenize(apiText);
 			
@@ -52,6 +60,11 @@ int main()
 			else if (args[0]=="volume")
 			{
 				output = vol.setVolume(args[1]);
+			}
+			else if  (args[0]=="timer")
+			{
+				vector<string> timerArgs = {args[1], args[2]};
+				output = th.createTimer(timerArgs);
 			}
 			
 			textToSpeech(output);

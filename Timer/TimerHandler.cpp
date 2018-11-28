@@ -12,7 +12,7 @@ TimerHandler::TimerHandler()
 
 // pass in args where args[0]=numerical and args[1]=units
 // e.g. args = ["30", "minutes"]
-void TimerHandler::createTimer(vector<string> args)
+string TimerHandler::createTimer(vector<string> args)
 {
 	pid_t pid = fork();
 	if (pid==0)
@@ -40,10 +40,11 @@ void TimerHandler::createTimer(vector<string> args)
 			int seconds = stoi(args[0]) * 60 * 60 * 24;
 			newTimer.setTimer(seconds);
 		}
-		cout << "hey"<< endl;
 	}
 	else 
 	{
 		_idcounter += 1;
+		string ret = "Timer set for " + args[0] + " " + args[1];
+		return ret;
 	}
 }

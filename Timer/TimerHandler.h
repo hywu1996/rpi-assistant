@@ -10,7 +10,7 @@ class TimerHandler
 {
 	public:
 		TimerHandler(); //constructor
-		void createTimer(std::vector<std::string>);
+		std::string createTimer(std::vector<std::string>);
 	private:
 		static int _idcounter;
 };
