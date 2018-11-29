@@ -1,11 +1,25 @@
+//
+//  Calculator.cpp
+//  
+//
+//  Created by Harry Wu on 2018-11-18.
+//
+//
+
 #include "Calculator.h"
 
 using namespace std;
 
+/*  @brief Empty constructor
+ */
 Calculator::Calculator()
 {
 }
-
+/*  @brief Take in vector of numbers and vector of operations to calculate equation result
+ *  @param nums vector of type float that contains the numerical terms in the equation
+ *  @param ops  vector of type char that contains the operators in the equation
+ *  @return     string: the answer to the equation to two decimal places
+ */
 string Calculator::calculate(vector<float> nums, vector<char> ops)
 {
     //division and multiplication
@@ -28,8 +42,6 @@ string Calculator::calculate(vector<float> nums, vector<char> ops)
             i--;
         }
     }
-
-
     //addition and subtraction
     for (int i = 0; i < ops.size(); i++)
     {
@@ -52,7 +64,7 @@ string Calculator::calculate(vector<float> nums, vector<char> ops)
     }
 
     stringstream stream;
-    stream << fixed << setprecision(2) << nums[0];
+    stream << fixed << setprecision(2) << nums[0]; //round to two decimal places
     string ret = stream.str();
     return ret;
 }
