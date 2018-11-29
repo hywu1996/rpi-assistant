@@ -9,10 +9,10 @@
 class Timer
 {
 	public:
-		Timer(int); //constructor
-		void setTimer(int);
-	private:
-		static int _id;
-		static std::string _command;
+		Timer(); //constructor
+		static void setTimer(int);
+	//private:
+		//static int _id;
+		//static std::string _command;
 };
 #endif
