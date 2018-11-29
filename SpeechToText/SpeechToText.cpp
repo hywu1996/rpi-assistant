@@ -13,12 +13,17 @@ void speechToText(std::string audiofile, std::string targetJSON) {
 }
 
 std::string parseJSON(std::string filename) {
-    std::ifstream t(filename);
-    std::string str((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
-    json jsonDeserial = json_deserialize(str);
-    std::string lowercase = jsonDeserial["results"][0]["alternatives"][0]["transcript"];
-    std::transform(lowercase.begin(), lowercase.end(), lowercase.begin(), ::tolower);
-    return lowercase;
+    try {
+        std::ifstream t(filename);
+        std::string str((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
+        json jsonDeserial = json_deserialize(str);
+        std::string lowercase = jsonDeserial["results"][0]["alternatives"][0]["transcript"];
+        std::transform(lowercase.begin(), lowercase.end(), lowercase.begin(), ::tolower);
+        return lowercase;
+    }
+    catch (...) {
+        return "Error. No discernable words detected";
+    }
 }
 
 void textToSpeech(std::string text) {

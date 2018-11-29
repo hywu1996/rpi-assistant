@@ -21,9 +21,15 @@ vector<string> TokenizerClass::tokenize(string input){
     while(getline(is, intermediate, ' ')){
         tokens.push_back(intermediate);
     }
+    if(tokens.size() < 2){
+        return command;
+    }
     for(int i = 0; i < tokens.size(); i++){
         //cout << tokens[i] << endl;
-        
+        if (tokens[i] == "" || tokens[i]== " ") 
+        {
+            continue;
+        }
         if(argumentFlag == 0 && commandFlag == 0 && tokens[i] == "run"){
             commandFlag = 1;
         }

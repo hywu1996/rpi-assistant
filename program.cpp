@@ -36,12 +36,29 @@ void isQuit(string voiceText)
 		exit(0);
 	}
 }
+// Obtained from Michael Mrozek off StackOverflow: Please don't hit us with plagarism.
+bool replace(std::string& str, const std::string& from, const std::string& to) {
+    size_t start_pos = str.find(from);
+    if(start_pos == std::string::npos)
+        return false;
+    str.replace(start_pos, from.length(), to);
+    return true;
+}
 
+string replaceDivisonOperands(string text)
+{
+	string ret = text;
+	replace(ret, "/", " / ");
+	replace(ret, "divided by", "/");
+	return ret;
+}
+//-----------------------
 void execute()
 {
 	string apiText = recordAudioToText();
 	cout << "Voice to Text: " << apiText << endl; //debugging
 	isQuit(apiText);
+	apiText = replaceDivisonOperands(apiText);
 	vector<string> args = TokenizerClass::tokenize(apiText);
 	
 	string output;
@@ -119,7 +136,7 @@ void execute()
 	}
 	else
 	{
-		output = "Please start command with the word run.";
+		output = "Please use a valid command.  Start with the key word run.";
 	}
 	cout << output << endl; //debugging
 	textToSpeech(output);
