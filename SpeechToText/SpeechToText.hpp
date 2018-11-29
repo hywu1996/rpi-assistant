@@ -8,6 +8,7 @@
 #include <curl/curl.h>
 #include <string>
 #include <cstring>
+#include <algorithm>
 #include "json.hpp"
 #include "../Parser/api_utils.hpp"
 

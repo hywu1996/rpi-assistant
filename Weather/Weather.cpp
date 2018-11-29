@@ -9,7 +9,7 @@ Weather::Weather(){
 string Weather::getWeather(string city)
 {
     string arguments = city;  //location
-    string filename = "./weatherapi.py "; //python script
+    string filename = "./Weather/weatherapi.py "; //python script
     string command = "python3 "; //python shell command
     
     command = command + filename + arguments;

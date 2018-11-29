@@ -11,5 +11,5 @@ Prerequisites:
 	GOOGLE_APPLICATION_CREDENTIALS="~/Downloads/secret-meridian-221416-2f60aa85d2a0.json"
 	*Alternatively, you can move the secret-meridian folder where you wish and set the GOOGLE_APPLICATION_CREDENTIALS appropriately.
 
-Functions:
-SpeechToText - g++ api_utils.cpp RecognitionAudio.cpp RecognitionConfig.cpp SpeechToText.cpp -o SpeechToText -Wno-psabi
+Main Program Compilation:
+g++ Parser/api_utils.cpp Parser/RecognitionAudio.cpp Parser/RecognitionConfig.cpp Tokenizer/tokenizer.cpp Weather/Weather.cpp Date/Date.cpp Volume/VolumeControl.cpp Timer/TimerHandler.cpp Timer/Timer.cpp Calculator/Calculator.cpp SpeechToText/SpeechToText.cpp program.cpp -o Program -Wno-psabi

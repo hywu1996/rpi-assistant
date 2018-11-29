@@ -19,7 +19,7 @@ string Calculator::calculate(vector<float> nums, vector<char> ops)
             nums.erase(nums.begin() + i + 1);
             i--;
         }
-        else if (ops[i] == '*')
+        else if (ops[i] == '*' || ops[i]=='x')
         {
             float product = nums[i] * nums[i+1];
             ops.erase(ops.begin() + i);
@@ -51,5 +51,8 @@ string Calculator::calculate(vector<float> nums, vector<char> ops)
         }
     }
 
-    return to_string(nums[0]);
+    stringstream stream;
+    stream << fixed << setprecision(2) << nums[0];
+    string ret = stream.str();
+    return ret;
 }

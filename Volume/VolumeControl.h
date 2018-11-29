@@ -3,10 +3,12 @@
 #include <string>
 #include <vector>
 
+#include <iostream>
+
 class VolumeControl
 {
 	public:
 		VolumeControl(); //constructor
-		void setVolume(std::string);
+		static std::string setVolume(std::string);
 };
 #endif

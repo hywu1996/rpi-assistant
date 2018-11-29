@@ -7,10 +7,10 @@
 class Date {
     public:
         Date();
-        std::string getDate();
+        static std::string getDate();
     private:
-        std::string getDay(int);
-        std::string getMonth(int);
-        std::string getYear(int);
+        static std::string getDay(int);
+        static std::string getMonth(int);
+        static std::string getYear(int);
 };
 #endif
