@@ -31,8 +31,7 @@ void textToSpeech(std::string text) {
 }
 
 void cleanupFiles(void) {
-    system("rm temp.flac");
-    system("rm temp.txt");
-    system("rm synthesize.txt");
-    system("rm audio.mp3");
+    system("rm *.txt");
+    system("rm *.flac");
+    system("rm *.mp3");
 }

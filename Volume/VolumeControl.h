@@ -9,6 +9,6 @@ class VolumeControl
 {
 	public:
 		VolumeControl(); //constructor
-		std::string setVolume(std::string);
+		static std::string setVolume(std::string);
 };
 #endif
