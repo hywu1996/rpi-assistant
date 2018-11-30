@@ -1,6 +1,18 @@
+/**
+ * TimerHandler.cpp
+ *
+ * @brief:  using thread and to fork process, split
+ * 		    different alarm cases for second, minute and hour.
+ * 			after program catch the argument of certain time period,
+ * 			use function setTimer to set a alarm.
+ *
+ * @author: Min Zhu
+ *
+ */
+
 #include "TimerHandler.h"
 #include <unistd.h>
-#include  <sys/types.h>
+#include <sys/types.h>
 
 using namespace std;
 
@@ -10,8 +22,13 @@ TimerHandler::TimerHandler()
 {
 }
 
-// pass in args where args[0]=numerical and args[1]=units
-// e.g. args = ["30", "minutes"]
+/**
+* @parameters : vector<string> args - pass in args where args[0]=numerical and args[1]=units
+* 				e.g. args = ["30", "minutes"]
+* @brief      : set different cases for args[1], then set the alarm with args[0] time period
+* 				using setTimer function in Timer.cpp.
+*/
+
 string TimerHandler::createTimer(vector<string> args)
 {
 	pid_t pid = fork();
@@ -43,7 +60,6 @@ string TimerHandler::createTimer(vector<string> args)
 	}
 	else 
 	{
-		//_idcounter += 1;
 		string ret = "Timer set for " + args[0] + " " + args[1];
 		return ret;
 	}
