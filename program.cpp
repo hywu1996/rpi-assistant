@@ -10,7 +10,11 @@
 
 using namespace std;
 
-// ensure that tokenizer returns at least 1 argument
+/*  @brief 		:	Ensure that the argument vector has at least the minimum amount of arguments
+ *  @parameters	: 	vector<string> argv	- vector of arguments
+ *	@parameters	: 	int numArgs 		- minimum amount of arguments
+ *  @return 	:	1 - if validated, 0 - if invalid
+ */
 int validateInput(vector<string> argv, int numArgs) 
 {
 	if (argv.size() >= numArgs)
@@ -19,6 +23,9 @@ int validateInput(vector<string> argv, int numArgs)
 		return 0;
 }
 
+/*  @brief 		:	Start recording audio, make api call to convert to text, return it as string
+ *  @return 	:	string - audio text converted to string
+ */
 string recordAudioToText()
 {
 	recordAudio();
@@ -26,6 +33,9 @@ string recordAudioToText()
 	return parseJSON("temp.txt");
 }
 
+/*  @brief 		:	Check if command is one to terminate program: "quit", "exit", "run quit", "run exit" and terminate if one is received
+ *  @parameters	: 	string voiceText	- the text from audio input
+ */
 void isQuit(string voiceText)
 {
 	if (voiceText=="run quit" || voiceText=="quit" || voiceText=="run exit" || voiceText=="exit")
@@ -36,8 +46,15 @@ void isQuit(string voiceText)
 		exit(0);
 	}
 }
-// Obtained from Michael Mrozek off StackOverflow: Please don't hit us with plagarism.
-bool replace(std::string& str, const std::string& from, const std::string& to) {
+/*  @brief 		:	Find and replace string sequences within a string
+ *  @parameters	: 	string& str  - parent string
+ *	@parameters	: 	string& from - sequence to replace
+ *  @parameters	: 	string& to   - sequence to replace with
+ *  @return 	:	true - on replaced, false - on fail
+ */
+bool replace(string& str, const string& from, const string& to) {
+	// Credits: Function obtained from Michael Mrozek off StackOverflow
+	// Please don't hit us with plagarism.
     size_t start_pos = str.find(from);
     if(start_pos == std::string::npos)
         return false;
@@ -45,6 +62,10 @@ bool replace(std::string& str, const std::string& from, const std::string& to) {
     return true;
 }
 
+/*  @brief 		:	Find and replace potential division operators with appropriate character within a string
+ *  @parameters	: 	string text - text from speech to text
+ *  @return 	:	string ret  - string with appropriate division characters
+ */
 string replaceDivisonOperands(string text)
 {
 	string ret = text;
@@ -52,7 +73,9 @@ string replaceDivisonOperands(string text)
 	replace(ret, "divided by", "/");
 	return ret;
 }
-//-----------------------
+
+/*  @brief 		:	Execute main program from voice recognition to machine response
+ */
 void execute()
 {
 	string apiText = recordAudioToText();

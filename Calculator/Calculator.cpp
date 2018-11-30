@@ -1,24 +1,26 @@
-//
-//  Calculator.cpp
-//  
-//
-//  Created by Harry Wu on 2018-11-18.
-//
-//
+/**
+* @author : Harry Wu
+* @brief  : Calculator function for +,-,*,/
+* Takes in two vectors as args. One has the
+* numbers in the mathematical equation and 
+* the other has the operators. Calculate the
+* result and return it to 2 decimal places
+* as a string.
+*/
 
 #include "Calculator.h"
 
 using namespace std;
 
-/*  @brief Empty constructor
+/*  @brief  : Empty constructor
  */
 Calculator::Calculator()
 {
 }
-/*  @brief Take in vector of numbers and vector of operations to calculate equation result
- *  @param nums vector of type float that contains the numerical terms in the equation
- *  @param ops  vector of type char that contains the operators in the equation
- *  @return     string: the answer to the equation to two decimal places
+/*  @brief      : Take in vector of numbers and vector of operations to calculate equation result
+ *  @parameters : vector<float> nums - vector of type float that contains the numerical terms in the equation
+ *  @parameters : vector<char> ops - vector of type char that contains the operators in the equation
+ *  @return     : string ret - the answer to the equation to two decimal places
  */
 string Calculator::calculate(vector<float> nums, vector<char> ops)
 {
