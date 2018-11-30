@@ -18,16 +18,16 @@ Date.o: ./Date/Date.cpp ./Date/Date.h
 	$(CC) $(CFLAGS) -o $@ $<
 
 api_utils.o: ./Parser/api_utils.cpp ./Parser/api_utils.hpp
-	$(CC) $(CFLAGS) -o $@ $<
+	$(CC) $(CFLAGS) -o $@ $< -Wno-psabi
 
 RecognitionAudio.o: ./Parser/RecognitionAudio.cpp ./Parser/RecognitionAudio.hpp
-	$(CC) $(CFLAGS) -o $@ $<
+	$(CC) $(CFLAGS) -o $@ $< -Wno-psabi
 
 RecognitionConfig.o: ./Parser/RecognitionConfig.cpp ./Parser/RecognitionConfig.hpp
-	$(CC) $(CFLAGS) -o $@ $<
+	$(CC) $(CFLAGS) -o $@ $< -Wno-psabi
 
 SpeechToText.o: ./SpeechToText/SpeechToText.cpp ./SpeechToText/SpeechToText.hpp
-	$(CC) $(CFLAGS) -o $@ $<
+	$(CC) $(CFLAGS) -o $@ $< -Wno-psabi
 
 Timer.o: ./Timer/Timer.cpp ./Timer/Timer.h
 	$(CC) $(CFLAGS) -o $@ $<
