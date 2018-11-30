@@ -1,0 +1,22 @@
+Group 32 -\/ Pi\+Assist
+
+A basic virtual assistant program using the Raspberry Pi in conjunction with Google\textquotesingle{}s Speech A\+PI.
+
+Hardware prerequisites\+:
+\begin{DoxyEnumerate}
+\item Raspberry Pi compatible U\+SB microphone
+\end{DoxyEnumerate}
+
+Software perequisites\+:
+\begin{DoxyEnumerate}
+\item Install libcurl (sudo apt-\/get install libcurl).
+\item Install and initialize the Google Cloud S\+DK (\href{https://cloud.google.com/sdk/docs/}{\tt https\+://cloud.\+google.\+com/sdk/docs/})
+\item Install nlohmann\textquotesingle{}s J\+S\+ON library for C++ (\href{https://github.com/nlohmann/json}{\tt https\+://github.\+com/nlohmann/json})
+\item Move the secret-\/meridian file to your Downloads folder, then initialize the following environment variables as such\+: A\+U\+D\+I\+O\+D\+EV=hw\+:1,0 A\+U\+D\+I\+O\+D\+R\+I\+V\+ER=alsa G\+O\+O\+G\+L\+E\+\_\+\+A\+P\+P\+L\+I\+C\+A\+T\+I\+O\+N\+\_\+\+C\+R\+E\+D\+E\+N\+T\+I\+A\+LS=\char`\"{}$\sim$/\+Downloads/secret-\/meridian-\/221416-\/2f60aa85d2a0.\+json\char`\"{}
+\end{DoxyEnumerate}
+
+Alternatively, you can move the secret-\/meridian folder where you wish and set the G\+O\+O\+G\+L\+E\+\_\+\+A\+P\+P\+L\+I\+C\+A\+T\+I\+O\+N\+\_\+\+C\+R\+E\+D\+E\+N\+T\+I\+A\+LS appropriately.
+
+Main Program Compilation\+:
+
+g++ Parser/api\+\_\+utils.\+cpp Parser/\+Recognition\+Audio.\+cpp Parser/\+Recognition\+Config.\+cpp Tokenizer/tokenizer.\+cpp Weather/\+Weather.\+cpp Date/\+Date.\+cpp Volume/\+Volume\+Control.\+cpp Timer/\+Timer\+Handler.\+cpp Timer/\+Timer.\+cpp Calculator/\+Calculator.\+cpp Speech\+To\+Text/\+Speech\+To\+Text.\+cpp program.\+cpp -\/o Program -\/\+Wno-\/psabi 
