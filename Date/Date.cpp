@@ -1,8 +1,18 @@
+/**
+* @author : Wayne Maysuik (wmaysuik)
+* @brief  : Gets the current date, formats it, and returns it as a string.
+*/
+
 #include "Date.h"
+
 Date::Date() {
 
 }
 
+/**
+* @returns : String - The formatted date and time.
+* @brief   : Gets the date as numbers using the ctime library.
+*/
 std::string Date::getDate() {
     time_t now = time(0);
     tm *ltm = localtime(&now);
@@ -14,6 +24,12 @@ std::string Date::getDate() {
     return stream.str();
 }
 
+
+/**
+* @parameters : int day - The day of the week to be converted to a string.
+* @returns    : String - The day of the week in string format.
+* @brief      : Converts the day of the week into a string representation.
+*/
 std::string Date::getDay(int day) {
 
     switch(day) {
@@ -36,6 +52,11 @@ std::string Date::getDay(int day) {
     }
 }
 
+/**
+* @parameters : int month - The month to be converted to a string.
+* @returns    : String - The month in string format.
+* @brief      : Converts the month into a string representation.
+*/
 std::string Date::getMonth(int month) {
     switch(month) {
         case 0:
@@ -67,6 +88,11 @@ std::string Date::getMonth(int month) {
     }
 }
 
+/**
+* @parameters : int year - The year to be converted into the correct year.
+* @returns    : String - The corerect year in string format.
+* @brief : Converts the year into the proper year.
+*/
 std::string Date::getYear(int year) {
     return std::to_string(year + 1900);
 }

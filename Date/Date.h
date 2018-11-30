@@ -1,3 +1,8 @@
+/**
+* @author : Wayne Maysuik (wmaysuik)
+* @brief  : Gets the current date, formats it, and returns it as a string.
+*/
+
 #ifndef DATE_H
 #define DATE_H
 #include <ctime>
